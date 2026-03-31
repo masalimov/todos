@@ -1,18 +1,22 @@
 /*
-import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 */
-import todos from './todos';
+import { useState } from 'react';
+import initialTodos from './todos';
 import TodoList from './todolist';
 
 function App() {
+   const [todos, setTodos] = useState(initialTodos);
+
    const setDone = (key: number) => {
-      const deed = todos.find((current) => current.key === key);
+      const newTodos = [...todos];
+      const deed = newTodos.find((current) => current.key === key);
       if (deed) {
          deed.done = true;
       }
+      setTodos(newTodos);
    };
    return (
       <>
