@@ -3,17 +3,17 @@ const date2 = new Date(2026, 2, 20, 16, 40);
 
 const todos = [
    {
-      title: "Изучить React",
-      desc: "Да поскорее!",
-      image: "",
+      title: 'Изучить React',
+      desc: 'Да поскорее!',
+      image: '',
       done: true,
       createdAt: date1.toLocaleString(),
       key: date1.getTime(),
    },
    {
-      title: "Написать первое React-приложение",
-      desc: "Список запланированных дел",
-      image: "",
+      title: 'Написать первое React-приложение',
+      desc: 'Список запланированных дел',
+      image: '',
       done: false,
       createdAt: date2.toLocaleString(),
       key: date2.getTime(),
