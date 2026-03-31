@@ -9,10 +9,11 @@ interface Todo {
 
 interface TodoProps {
    todos: Todo[];
-   setDone: (key: number) => void;
+   setItemDone: (key: number) => void;
+   delItem: (key: number) => void;
 }
 
-function TodoList({ todos, setDone }: TodoProps) {
+function TodoList({ todos, setItemDone, delItem }: TodoProps) {
    return (
       <section>
          <h1>Дела</h1>
@@ -30,14 +31,20 @@ function TodoList({ todos, setDone }: TodoProps) {
                            title="Выполнено"
                            disabled={item.done}
                            onClick={() => {
-                              setDone(item.key);
+                              setItemDone(item.key);
                            }}
                         >
                            &#9745;
                         </button>
                      </td>
                      <td>
-                        <button className="button is-danger" title="Удалить">
+                        <button
+                           className="button is-danger"
+                           title="Удалить"
+                           onClick={() => {
+                              delItem(item.key);
+                           }}
+                        >
                            &#9746;
                         </button>
                      </td>

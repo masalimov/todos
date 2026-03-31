@@ -1,8 +1,3 @@
-/*
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-*/
 import { useState } from 'react';
 import initialTodos from './todos';
 import TodoList from './todolist';
@@ -18,6 +13,12 @@ function App() {
       }
       setTodos(newTodos);
    };
+
+   const del = (key: number) => {
+      const newTodos = todos.filter((current) => current.key !== key);
+      setTodos(newTodos);
+   };
+
    return (
       <>
          <div className="container">
@@ -27,7 +28,7 @@ function App() {
                </div>
             </nav>
             <main className="content px-6 py-6">
-               <TodoList todos={todos} setDone={setDone} />
+               <TodoList todos={todos} setItemDone={setDone} delItem={del} />
             </main>
          </div>
       </>
