@@ -1,4 +1,4 @@
-interface Todo {
+export interface Todo {
    title: string;
    desc: string;
    image: string;
@@ -13,7 +13,7 @@ interface TodoProps {
    delItem: (key: number) => void;
 }
 
-function TodoList({ todos, setItemDone, delItem }: TodoProps) {
+export default function TodoList({ todos, setItemDone, delItem }: TodoProps) {
    return (
       <section>
          <h1>Дела</h1>
@@ -55,5 +55,3 @@ function TodoList({ todos, setItemDone, delItem }: TodoProps) {
       </section>
    );
 }
-
-export default TodoList;
