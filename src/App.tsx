@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router';
 import { useState } from 'react';
 import initialTodos from './todos';
 import TodoList, { type Todo } from './todolist';
@@ -33,8 +34,9 @@ function App() {
                </div>
             </nav>
             <main className="content px-6 py-6">
-               <TodoList todos={todos} setItemDone={setDone} delItem={delItem} />
-               <TodoAdd addItem={addItem} />
+               {/* <TodoList todos={todos} setItemDone={setDone} delItem={delItem} />
+               <TodoAdd addItem={addItem} /> */}
+               <Outlet />
             </main>
          </div>
       </>

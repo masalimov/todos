@@ -5,7 +5,7 @@ interface TodoAddProps {
    addItem: (deed: Todo) => void;
 }
 
-export default function TodoAdd({ addItem }: TodoAddProps) {
+export default function TodoAdd(props: TodoAddProps) {
    const [title, setTitle] = useState('');
    const [desc, setDesc] = useState('');
    const [image, setImage] = useState('');
@@ -22,7 +22,7 @@ export default function TodoAdd({ addItem }: TodoAddProps) {
          createdAt: date.toLocaleString(),
          key: date.getTime(),
       };
-      addItem(newDeed);
+      props.addItem(newDeed);
       evt.target?.reset();
    };
 
