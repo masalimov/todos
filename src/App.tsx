@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import initialTodos from './todos';
 import TodoList, { type Todo } from './todolist';
-import TodoAdd from './todoadd';
+// import TodoAdd from './todoadd';
 
 function App() {
    const [todos, setTodos] = useState(initialTodos);
@@ -15,9 +15,9 @@ function App() {
       setTodos(newTodos);
    };
 
-   const addItem = (deed: Todo) => {
-      setTodos([...todos, deed]);
-   };
+   // const addItem = (deed: Todo) => {
+   //    setTodos([...todos, deed]);
+   // };
 
    const delItem = (key: number) => {
       const newTodos = todos.filter((current) => current.key !== key);
@@ -34,7 +34,7 @@ function App() {
             </nav>
             <main className="content px-6 py-6">
                <TodoList todos={todos} setItemDone={setDone} delItem={delItem} />
-               <TodoAdd addItem={addItem} />
+               {/* <TodoAdd addItem={addItem} /> */}
             </main>
          </div>
       </>
