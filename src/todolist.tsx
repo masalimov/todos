@@ -1,25 +1,25 @@
-export interface Todo {
-   title: string;
-   desc: string;
-   image: string;
-   done: boolean;
-   createdAt: string;
-   key: number;
-}
+import { useSubmit, useLoaderData } from 'react-router';
 
-interface TodoProps {
-   todos: Todo[];
-   setItemDone: (key: number) => void;
-   delItem: (key: number) => void;
-}
+import { type Todo } from './todos';
 
-export default function TodoList({ todos, setItemDone, delItem }: TodoProps) {
+export default function TodoList() {
+   const list = useLoaderData<Todo[]>();
+   const submit = useSubmit();
+
+   const handleDoneClick = async (key: number) => {
+      await submit(null, { action: `/${key}`, method: 'PATCH' });
+   };
+
+   const handleDelClick = async (key: number) => {
+      await submit(null, { action: `/${key}`, method: 'DELETE' });
+   };
+
    return (
       <section>
          <h1>Дела</h1>
          <table className="table is-hoverable is-fullwidth">
             <tbody>
-               {todos.map((item: Todo) => (
+               {list.map((item: Todo) => (
                   <tr key={item.key}>
                      <td>
                         {item.done && <del>{item.title}</del>}
@@ -31,7 +31,7 @@ export default function TodoList({ todos, setItemDone, delItem }: TodoProps) {
                            title="Выполнено"
                            disabled={item.done}
                            onClick={() => {
-                              setItemDone(item.key);
+                              void handleDoneClick(item.key);
                            }}
                         >
                            &#9745;
@@ -42,7 +42,7 @@ export default function TodoList({ todos, setItemDone, delItem }: TodoProps) {
                            className="button is-danger"
                            title="Удалить"
                            onClick={() => {
-                              delItem(item.key);
+                              void handleDelClick(item.key);
                            }}
                         >
                            &#9746;

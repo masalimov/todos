@@ -1,3 +1,12 @@
+export interface Todo {
+   title: string;
+   desc: string;
+   image: string;
+   done: boolean;
+   createdAt: string;
+   key: number;
+}
+
 const date1 = new Date(2026, 2, 10, 10, 15);
 const date2 = new Date(2026, 2, 20, 16, 40);
 

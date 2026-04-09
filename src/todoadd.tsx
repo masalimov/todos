@@ -1,29 +1,17 @@
 import React, { useState } from 'react';
-import { type Todo } from './todolist';
+import { useSubmit } from 'react-router';
 
-interface TodoAddProps {
-   addItem: (deed: Todo) => void;
-}
-
-export default function TodoAdd(props: TodoAddProps) {
+export default function TodoAdd() {
    const [title, setTitle] = useState('');
    const [desc, setDesc] = useState('');
    const [image, setImage] = useState('');
 
+   const submit = useSubmit();
+
    const handleFormSubmit = (evt: React.SubmitEvent<HTMLFormElement>) => {
       // Prevent the browser from reloading the page
       evt.preventDefault();
-      const date = new Date();
-      const newDeed: Todo = {
-         title,
-         desc,
-         image,
-         done: false,
-         createdAt: date.toLocaleString(),
-         key: date.getTime(),
-      };
-      props.addItem(newDeed);
-      evt.target?.reset();
+      void submit({ title, desc, image }, { action: '/add', method: 'post' });
    };
 
    const handleFormReset = () => {
