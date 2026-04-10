@@ -1,4 +1,4 @@
-import { redirect, type ActionFunctionArgs } from 'react-router';
+import { redirect, type ActionFunctionArgs, type Params } from 'react-router';
 
 import todos, { type Todo } from './todos';
 
@@ -22,8 +22,8 @@ export async function addTodo({ request }: ActionFunctionArgs) {
    return redirect('/');
 }
 
-export async function getTodo({ params }: { params: Promise<{ key: number }> }) {
-   const key = (await params).key;
+export function getTodo({ params }: { params: Params<'key'> }) {
+   const key = params.key ? +params.key : 0;
    const todo = todos.find((current) => current.key === key);
    return todo;
 }

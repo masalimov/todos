@@ -1,4 +1,4 @@
-import { useSubmit, useLoaderData } from 'react-router';
+import { useSubmit, useLoaderData, Link } from 'react-router';
 
 import { type Todo } from './todos';
 
@@ -22,8 +22,10 @@ export default function TodoList() {
                {list.map((item: Todo) => (
                   <tr key={item.key}>
                      <td>
-                        {item.done && <del>{item.title}</del>}
-                        {!item.done && item.title}
+                        <Link to={`/${item.key}`}>
+                           {item.done && <del>{item.title}</del>}
+                           {!item.done && item.title}
+                        </Link>
                      </td>
                      <td>
                         <button
