@@ -5,7 +5,7 @@ import TodoList from './TodoList';
 import TodoAdd from './TodoAdd';
 import TodoDetail from './TodoDetail';
 
-import { getTodos, addTodo, getTodo } from './api';
+import { getTodos, addTodo, getTodo, actTodo } from './api';
 
 const router = createBrowserRouter([
    {
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
       children: [
          { index: true, Component: TodoList, loader: getTodos },
          { path: 'add', Component: TodoAdd, action: addTodo },
-         { path: ':key', Component: TodoDetail, loader: getTodo },
+         { path: ':key', Component: TodoDetail, loader: getTodo, action: actTodo },
       ],
    },
 ]);

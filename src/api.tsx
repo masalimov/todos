@@ -27,3 +27,16 @@ export function getTodo({ params }: { params: Params<'key'> }) {
    const todo = todos.find((current) => current.key === key);
    return todo;
 }
+
+export function actTodo({ params, request }: ActionFunctionArgs) {
+   const key = params.key ? +params.key : 0;
+   const todoIndex = todos.findIndex((current) => current.key === key);
+
+   if (todoIndex && request.method === 'PATCH') {
+      todos[todoIndex].done = true;
+   }
+   if (todoIndex && request.method === 'DELETE') {
+      todos.splice(todoIndex, 1);
+   }
+   return redirect('/');
+}
