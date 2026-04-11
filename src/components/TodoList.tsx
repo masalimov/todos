@@ -1,6 +1,6 @@
 import { useSubmit, useLoaderData, Link } from 'react-router';
 
-import { type Todo } from './todos';
+import { type Todo } from '../todos';
 
 export default function TodoList() {
    const list = useLoaderData<Todo[]>();

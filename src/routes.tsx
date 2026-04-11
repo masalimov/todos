@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router';
 
-import App from './App';
-import TodoList from './TodoList';
-import TodoAdd from './TodoAdd';
-import TodoDetail from './TodoDetail';
+import App from './components/App';
+import TodoList from './components/TodoList';
+import TodoAdd from './components/TodoAdd';
+import TodoDetail from './components/TodoDetail';
 import NotFoundPage from './components/Error404';
 
 import { getTodos, addTodo, getTodo, actTodo } from './api';
