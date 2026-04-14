@@ -1,8 +1,21 @@
 import { Outlet, NavLink } from 'react-router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { type User } from 'firebase/auth';
+
+import { setStateChangeHandler } from '../auth';
 
 function App() {
    const [showMenu, setShowMenu] = useState(false);
+   const [user, setUser] = useState<User | null>(null);
+
+   const authStateChanged = (__user: User) => setUser(__user);
+
+   useEffect(() => {
+      const unsubscribe = setStateChangeHandler(authStateChanged);
+      return () => {
+         unsubscribe();
+      };
+   }, []);
 
    const handleBurgerClick = (evt: React.MouseEvent) => {
       evt.preventDefault();

@@ -5,8 +5,10 @@ import TodoList from './components/TodoList';
 import TodoAdd from './components/TodoAdd';
 import TodoDetail from './components/TodoDetail';
 import NotFoundPage from './components/Error404';
+import Register from './components/Register';
 
 import { getTodos, addTodo, getTodo, actTodo } from './api';
+import { register } from './auth';
 
 const router = createBrowserRouter([
    {
@@ -22,7 +24,7 @@ const router = createBrowserRouter([
             action: actTodo,
             errorElement: <NotFoundPage />,
          },
-         // { path: '*', Component: NotFoundPage },
+         { path: 'register', Component: Register, action: register },
       ],
    },
 ]);

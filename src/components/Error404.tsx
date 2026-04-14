@@ -26,7 +26,7 @@ export const NotFoundPage = () => {
    const handleHome = () => navigate('/', { replace: true });
    const handleBack = () => navigate(-1);
 
-   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+   const handleSearch = (e: React.SubmitEvent<HTMLFormElement>) => {
       e.preventDefault();
       const form = e.currentTarget;
       const input = (form.elements.namedItem('q') as HTMLInputElement | null)?.value?.trim();
