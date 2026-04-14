@@ -8,7 +8,7 @@ function App() {
    const [showMenu, setShowMenu] = useState(false);
    const [user, setUser] = useState<User | null>(null);
 
-   const authStateChanged = (__user: User) => setUser(__user);
+   const authStateChanged = (__user: User | null) => setUser(__user);
 
    useEffect(() => {
       const unsubscribe = setStateChangeHandler(authStateChanged);
