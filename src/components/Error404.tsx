@@ -8,21 +8,6 @@ export const NotFoundPage = () => {
    const showSearch = true;
    const navigate = useNavigate();
 
-   const styles = {
-      code: {
-         fontSize: 72,
-         fontWeight: 700,
-         margin: 0,
-         color: '#111827',
-      },
-      search: {
-         marginTop: 16,
-         display: 'flex',
-         gap: 8,
-         justifyContent: 'center',
-      },
-   };
-
    const handleHome = () => navigate('/', { replace: true });
    const handleBack = () => navigate(-1);
 
@@ -36,61 +21,64 @@ export const NotFoundPage = () => {
    };
 
    return (
-      <section className="container is-max-tablet">
-         <div className="box" role="alert" aria-labelledby="notfound-title">
-            <div
-               style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 24,
-                  justifyContent: 'center',
-                  flexWrap: 'wrap',
-               }}
-            >
-               <h1 style={styles.code} aria-hidden>
-                  404
-               </h1>
-               <div style={{ maxWidth: 420 }}>
-                  <h2 id="notfound-title" className="title is-4">
-                     {title}
-                  </h2>
-                  <p>{description}</p>
-                  <div className="block has-text-centered">
-                     <button
-                        className="button is-primary"
-                        onClick={() => {
-                           void handleHome();
-                        }}
-                     >
-                        На главную
-                     </button>
-                     <button
-                        className="button is-primary is-light"
-                        onClick={() => {
-                           void handleBack();
-                        }}
-                     >
-                        Назад
-                     </button>
+      <section className="section">
+         <div className="container is-max-tablet">
+            <div className="box has-text-centered" role="alert" aria-labelledby="notfound-title">
+               <div className="columns is-vcentered is-variable is-6 is-multiline">
+                  <div className="column is-narrow is-centered">
+                     <h1 className="title is-size-1 has-text-weight-bold" aria-hidden>
+                        404
+                     </h1>
                   </div>
 
-                  {showSearch && (
-                     <form
-                        style={styles.search}
-                        onSubmit={handleSearch}
-                        aria-label="Поиск по сайту"
-                     >
-                        <input
-                           name="q"
-                           placeholder="Поиск..."
-                           aria-label="Поиск"
-                           className="input is-info"
-                        />
-                        <button type="submit" className="button is-info">
-                           Найти
+                  <div className="column">
+                     <h2 id="notfound-title" className="title is-4">
+                        {title}
+                     </h2>
+                     <p className="content has-text-grey">{description}</p>
+
+                     <div className="buttons is-centered">
+                        <button
+                           className="button is-dark"
+                           onClick={() => {
+                              void handleHome();
+                           }}
+                        >
+                           На главную
                         </button>
-                     </form>
-                  )}
+                        <button
+                           className="button is-light"
+                           onClick={() => {
+                              void handleBack();
+                           }}
+                        >
+                           Назад
+                        </button>
+                     </div>
+
+                     {showSearch && (
+                        <form
+                           className="field has-addons is-justify-content-center"
+                           onSubmit={handleSearch}
+                           aria-label="Поиск по сайту"
+                        >
+                           <div className="control">
+                              <input
+                                 className="input"
+                                 name="q"
+                                 type="text"
+                                 placeholder="Поиск..."
+                                 aria-label="Поиск"
+                              />
+                           </div>
+                           <div className="control">
+                              <button type="submit" className="button is-dark">
+                                 Найти
+                              </button>
+                           </div>
+                        </form>
+                     )}
+                  </div>
                </div>
             </div>
          </div>

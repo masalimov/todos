@@ -3,8 +3,6 @@ import {
    createUserWithEmailAndPassword,
    onAuthStateChanged,
    type User,
-   // type NextOrObserver,
-   // type Unsubscribe,
 } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 
