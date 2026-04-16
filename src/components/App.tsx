@@ -8,7 +8,7 @@ function App() {
    const [showMenu, setShowMenu] = useState(false);
    const [user, setUser] = useState<User | null>(null);
 
-   const authStateChanged = (__user: User | null) => setUser(__user);
+   const authStateChanged = (__user: User) => setUser(__user);
 
    useEffect(() => {
       const unsubscribe = setStateChangeHandler(authStateChanged);
@@ -33,7 +33,7 @@ function App() {
                         'navbar-item is-uppercase' + (isActive ? ' is-active' : '')
                      }
                   >
-                     Todos
+                     {user ? user.email : 'Todos'}
                   </NavLink>
                   <a
                      href="/"
@@ -51,12 +51,26 @@ function App() {
                   onClick={handleBurgerClick}
                >
                   <div className="navbar-start">
-                     <NavLink
-                        to="/add"
-                        className={({ isActive }) => 'navbar-item' + (isActive ? ' is-active' : '')}
-                     >
-                        Создать дело
-                     </NavLink>
+                     {user && (
+                        <NavLink
+                           to="/add"
+                           className={({ isActive }) =>
+                              'navbar-item' + (isActive ? ' is-active' : '')
+                           }
+                        >
+                           Создать дело
+                        </NavLink>
+                     )}
+                     {!user && (
+                        <NavLink
+                           to="/register"
+                           className={({ isActive }) =>
+                              'navbar-item' + (isActive ? ' is-active' : '')
+                           }
+                        >
+                           Зарегистрироваться
+                        </NavLink>
+                     )}
                   </div>
                </div>
             </nav>

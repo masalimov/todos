@@ -11,9 +11,6 @@ export default defineConfig([
    globalIgnores(['dist']),
    {
       files: ['**/*.{ts,tsx}'],
-      rules: {
-         '@typescript-eslint/ban-ts-comment': 'error',
-      },
       extends: [
          js.configs.recommended,
          // Remove tseslint.configs.recommended and replace with this

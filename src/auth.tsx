@@ -33,6 +33,6 @@ export async function register({ request }: ActionFunctionArgs) {
    }
 }
 
-export function setStateChangeHandler(func: (__user: User | null) => void) {
+export function setStateChangeHandler(func: (__user: User) => void) {
    return onAuthStateChanged(auth, func);
 }
