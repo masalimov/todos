@@ -91,3 +91,8 @@ export async function logout(): Promise<Response> {
    window.localStorage.removeItem('user-id');
    return redirect('/login');
 }
+
+export function onlyLoggedOut(): Response | null {
+   if (getUserId()) return redirect('/');
+   else return null;
+}

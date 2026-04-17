@@ -9,7 +9,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 
 import { getTodos, addTodo, getTodo, actTodo } from './api';
-import { register, login, logout } from './auth';
+import { register, login, logout, onlyLoggedOut } from './auth';
 
 const router = createBrowserRouter([
    {
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
             action: actTodo,
             errorElement: <NotFoundPage />,
          },
-         { path: 'register', Component: Register, action: register },
-         { path: 'login', Component: Login, action: login },
+         { path: 'register', Component: Register, action: register, loader: onlyLoggedOut },
+         { path: 'login', Component: Login, action: login, loader: onlyLoggedOut },
          { path: 'logout', loader: logout },
       ],
    },
