@@ -50,7 +50,7 @@ export default function Login() {
                   <input type="reset" className="button is-varning is-light" value="Сброс" />
                </div>
                <div className="control">
-                  <input type="submit" className="button is-primary" value="Зарегистрироваться" />
+                  <input type="submit" className="button is-primary" value="Войти" />
                </div>
             </div>
          </form>

@@ -73,7 +73,7 @@ export default function TodoAdd() {
             </div>
             <div className="field is-grouped is-grouped-right">
                <div className="control">
-                  <input type="reset" className="button is-warning is-light" value="Очистить" />
+                  <input type="reset" className="button is-warning is-light" value="Отмена" />
                </div>
                <div className="control">
                   <input type="submit" className="button is-primary" value="Создать дело" />

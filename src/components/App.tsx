@@ -11,7 +11,7 @@ function App() {
    const authStateChanged = (__user: User) => setUser(__user);
 
    useEffect(() => {
-      const unsubscribe = setStateChangeHandler(authStateChanged);
+      const unsubscribe = setStateChangeHandler({ func: authStateChanged });
       return () => {
          unsubscribe();
       };

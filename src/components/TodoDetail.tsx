@@ -1,6 +1,6 @@
 import { useLoaderData } from 'react-router';
 
-import { type Todo } from '../todos';
+import { type Todo } from '../interfaces';
 
 export default function TodoDetail() {
    const todo = useLoaderData<Todo>();

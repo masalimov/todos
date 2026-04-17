@@ -1,12 +1,32 @@
 import { redirect, type ActionFunctionArgs, type Params } from 'react-router';
+import { getDatabase, ref, push, set, query, get, remove } from 'firebase/database';
+import firebaseApp from './firebase';
+import { getUserId } from './auth';
 
-import todos, { type Todo } from './todos';
+import { type Todo } from './interfaces';
 
-export function getTodos(): Todo[] {
-   return todos;
+const database = getDatabase(firebaseApp);
+
+export async function getTodos(): Todo[] {
+   const currentUserId = getUserId();
+   if (!currentUserId) return redirect('/login');
+
+   const r = ref(database, `users/${currentUserId}/todos`);
+   const q = query(r);
+   const s = await get(q);
+   const res: Todo[] = [];
+   s.forEach((doc) => {
+      const __todo: Todo = doc.val() as Todo;
+      __todo.key = doc.key;
+      res.push(__todo);
+   });
+   return res;
 }
 
 export async function addTodo({ request }: ActionFunctionArgs): Promise<Response> {
+   const currentUserId = getUserId();
+   if (!currentUserId) return redirect('/login');
+
    const fd = await request.formData();
    const date = new Date();
    const newTodo: Todo = {
@@ -15,28 +35,38 @@ export async function addTodo({ request }: ActionFunctionArgs): Promise<Response
       image: fd.get('image') as string,
       done: false,
       createdAt: date.toLocaleString(),
-      key: date.getTime(),
+      // key: date.getTime(),
    };
 
-   todos.push(newTodo);
+   // todos.push(newTodo);
+   const db = ref(database, `users/${currentUserId}/todos`);
+   const r = await push(db);
+   await set(r, newTodo);
    return redirect('/');
 }
 
-export function getTodo({ params }: { params: Params<'key'> }): Todo | undefined {
-   const key = params.key ? +params.key : 0;
-   const todo = todos.find((current) => current.key === key);
-   return todo;
+export async function getTodo({ params }: { params: Params<'key'> }): Todo | undefined {
+   const currentUserId = getUserId();
+   if (!currentUserId) return redirect('/login');
+
+   const r = ref(database, `users/${currentUserId}/todos/${params.key}`);
+   const q = query(r);
+   const s = await get(q);
+   if (!s.exists()) throw new Error();
+   return s.val() as Todo;
 }
 
 export function actTodo({ params, request }: ActionFunctionArgs): Response {
-   const key = params.key ? +params.key : 0;
-   const todoIndex = todos.findIndex((current) => current.key === key);
+   const currentUserId = getUserId();
+   if (!currentUserId) return redirect('/login');
 
-   if (todoIndex && request.method === 'PATCH') {
-      todos[todoIndex].done = true;
+   if (request.method === 'PATCH') {
+      const r = ref(database, `users/${currentUserId}/todos/${params.key}/done`);
+      void set(r, true);
    }
    if (todoIndex && request.method === 'DELETE') {
-      todos.splice(todoIndex, 1);
+      const r = ref(database, `users/${currentUserId}/todos/${params.key}`);
+      void remove(r);
    }
    return redirect('/');
 }

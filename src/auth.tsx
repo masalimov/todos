@@ -5,22 +5,41 @@ import {
    signInWithEmailAndPassword,
    signOut,
    type User,
+   type AuthError,
+   type UserCredential,
+   type Unsubscribe,
 } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 
 import firebaseApp from './firebase';
 import { redirect, type ActionFunctionArgs } from 'react-router';
 
-const auth = getAuth(firebaseApp);
+export const auth = getAuth(firebaseApp);
 
-export async function register({ request }: ActionFunctionArgs) {
+export function getUserId(): string | null {
+   if (auth.currentUser) {
+      return auth.currentUser?.uid;
+   } else return window.localStorage.getItem('user-id');
+}
+
+export async function register({
+   request,
+}: ActionFunctionArgs): Promise<string | Response | undefined> {
+   if (getUserId()) return redirect('/');
+
    const fd = await request.formData();
 
    try {
       const email = fd.get('email') as string;
       const pass = fd.get('password') as string;
       if (email && pass) {
-         const oUC = await createUserWithEmailAndPassword(auth, email, pass);
+         await createUserWithEmailAndPassword(auth, email, pass)
+            .then((uc: UserCredential) => {
+               window.localStorage.setItem('user-id', uc.user.uid);
+            })
+            .catch((error: AuthError) => {
+               console.log(`${error.code} ${error.message}`);
+            });
       }
       return redirect('/');
    } catch (error) {
@@ -33,18 +52,28 @@ export async function register({ request }: ActionFunctionArgs) {
    }
 }
 
-export function setStateChangeHandler(func: (__user: User) => void) {
+export function setStateChangeHandler({ func }: { func: (__user: User) => void }): Unsubscribe {
    return onAuthStateChanged(auth, func);
 }
 
-export async function login({ request }: ActionFunctionArgs) {
+export async function login({
+   request,
+}: ActionFunctionArgs): Promise<string | Response | undefined> {
+   if (getUserId()) return redirect('/');
+
    const fd = await request.formData();
 
    try {
       const email = fd.get('email') as string;
       const pass = fd.get('password') as string;
       if (email && pass) {
-         await signInWithEmailAndPassword(auth, email, pass);
+         await signInWithEmailAndPassword(auth, email, pass)
+            .then((uc: UserCredential) => {
+               window.localStorage.setItem('user-id', uc.user.uid);
+            })
+            .catch((error: AuthError) => {
+               console.log(`${error.code} ${error.message}`);
+            });
       }
       return redirect('/');
    } catch (error) {
@@ -57,7 +86,8 @@ export async function login({ request }: ActionFunctionArgs) {
    }
 }
 
-export async function logout() {
+export async function logout(): Promise<Response> {
    await signOut(auth);
+   window.localStorage.removeItem('user-id');
    return redirect('/login');
 }
