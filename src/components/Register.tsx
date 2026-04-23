@@ -69,13 +69,13 @@ export default function Register() {
          <h1>Регистрация</h1>
          <form onSubmit={handleFormSubmit} onReset={handleFormReset}>
             {/* Поле email */}
-            <div className="block text-sm font-medium mb-2">
+            <div className="mb-2 block text-sm font-medium">
                <label className="label">Адрес электронной почты</label>
                <div className="control">
                   <input
                      type="email"
                      value={email}
-                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                     className="w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                      onChange={(e) => setEmail(e.target.value)}
                   />
                </div>
@@ -83,12 +83,12 @@ export default function Register() {
             </div>
             {/* Поле password */}
             <div>
-               <label className="block text-sm font-medium mb-2">Пароль</label>
+               <label className="mb-2 block text-sm font-medium">Пароль</label>
                <div>
                   <input
                      type="password"
                      value={password}
-                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                     className="w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                      onChange={(e) => setPassword(e.target.value)}
                   />
                </div>
@@ -97,12 +97,12 @@ export default function Register() {
 
             {/* Поле password confirm */}
             <div>
-               <label className="block text-sm font-medium mb-2">Повторите пароль</label>
+               <label className="mb-2 block text-sm font-medium">Повторите пароль</label>
                <div>
                   <input
                      type="password"
                      value={passwordConfirm}
-                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                     className="w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                      onChange={(e) => setPasswordConfirm(e.target.value)}
                   />
                </div>
@@ -116,14 +116,14 @@ export default function Register() {
                <div>
                   <input
                      type="reset"
-                     className="px-4 py-2 rounded-md bg-yellow-200 hover:bg-yellow-300 text-yellow-900 focus:outline-none"
+                     className="rounded-md bg-yellow-200 px-4 py-2 text-yellow-900 hover:bg-yellow-300 focus:outline-none"
                      value="Сброс"
                   />
                </div>
                <div>
                   <input
                      type="submit"
-                     className="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white focus:outline-none"
+                     className="rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none"
                      value="Зарегистрироваться"
                   />
                </div>

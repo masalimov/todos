@@ -21,32 +21,32 @@ export const NotFoundPage = () => {
    };
 
    return (
-      <main className="min-h-[70vh] flex items-center justify-center px-6 py-12 bg-gray-50">
+      <main className="flex min-h-[70vh] items-center justify-center bg-gray-50 px-6 py-12">
          <div
-            className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-10"
+            className="w-full max-w-3xl rounded-2xl bg-white p-10 shadow-lg"
             role="alert"
             aria-labelledby="notfound-title"
          >
-            <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex flex-col items-center gap-8 md:flex-row">
                <h1
-                  className="text-6xl md:text-7xl font-extrabold text-gray-900 leading-none"
+                  className="text-6xl leading-none font-extrabold text-gray-900 md:text-7xl"
                   aria-hidden
                >
                   404
                </h1>
 
                <div className="max-w-xl text-center md:text-left">
-                  <h2 id="notfound-title" className="text-xl font-semibold text-gray-900 mb-2">
+                  <h2 id="notfound-title" className="mb-2 text-xl font-semibold text-gray-900">
                      {title}
                   </h2>
-                  <p className="text-gray-500 mb-6">{description}</p>
+                  <p className="mb-6 text-gray-500">{description}</p>
 
-                  <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-4">
+                  <div className="mb-4 flex flex-wrap justify-center gap-3 md:justify-start">
                      <button
                         onClick={() => {
                            void handleHome();
                         }}
-                        className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                        className="inline-flex items-center rounded-lg bg-gray-900 px-4 py-2 text-white hover:bg-gray-800 focus:ring-2 focus:ring-gray-300 focus:outline-none"
                      >
                         На главную
                      </button>
@@ -54,7 +54,7 @@ export const NotFoundPage = () => {
                         onClick={() => {
                            void handleBack();
                         }}
-                        className="inline-flex items-center px-4 py-2 bg-white border border-gray-200 text-gray-900 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                        className="inline-flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-900 hover:bg-gray-50 focus:ring-2 focus:ring-gray-200 focus:outline-none"
                      >
                         Назад
                      </button>
@@ -62,7 +62,7 @@ export const NotFoundPage = () => {
 
                   {showSearch && (
                      <form
-                        className="flex justify-center md:justify-start gap-2"
+                        className="flex justify-center gap-2 md:justify-start"
                         onSubmit={handleSearch}
                         aria-label="Поиск по сайту"
                      >
@@ -71,11 +71,11 @@ export const NotFoundPage = () => {
                            type="text"
                            placeholder="Поиск..."
                            aria-label="Поиск"
-                           className="px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 w-60"
+                           className="w-60 rounded-lg border border-gray-200 px-4 py-2 focus:ring-2 focus:ring-gray-200 focus:outline-none"
                         />
                         <button
                            type="submit"
-                           className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                           className="rounded-lg bg-gray-900 px-4 py-2 text-white hover:bg-gray-800 focus:ring-2 focus:ring-gray-300 focus:outline-none"
                         >
                            Найти
                         </button>

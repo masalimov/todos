@@ -40,7 +40,7 @@ export default function TodoAdd() {
                <label className="block text-sm font-medium mb-2">Заголовок</label>
                <div className="control">
                   <input
-                     className="w-full px-3 py-2 border rounded-md min-h-[120px] resize-vertical focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                     className="w-full px-3 py-2 border rounded-md min-h-30 resize-vertical focus:outline-none focus:ring-2 focus:ring-indigo-500"
                      value={title}
                      onChange={(e) => setTitle(e.target.value)}
                   />
@@ -50,7 +50,7 @@ export default function TodoAdd() {
                <label className="block text-sm font-medium mb-2">Примечание</label>
                <div>
                   <textarea
-                     className="w-full px-3 py-2 border rounded-md min-h-[120px] resize-vertical focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                     className="w-full px-3 py-2 border rounded-md min-h-30 resize-vertical focus:outline-none focus:ring-2 focus:ring-indigo-500"
                      value={desc}
                      onChange={(e) => setDesc(e.target.value)}
                   />

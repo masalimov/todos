@@ -25,13 +25,13 @@ function App() {
    return (
       <>
          <div className="container mx-auto px-4">
-            <nav className="bg-white border-b">
+            <nav className="border-b bg-white">
                <div className="flex items-center justify-between py-3">
                   <div className="flex items-center space-x-4">
                      <NavLink
                         to="/"
                         className={({ isActive }) =>
-                           'text-sm uppercase font-medium' +
+                           'text-sm font-medium uppercase' +
                            (isActive ? ' text-indigo-600' : ' text-gray-700')
                         }
                      >
@@ -42,24 +42,24 @@ function App() {
                      <button
                         className={
                            showMenu
-                              ? 'md:hidden inline-flex items-center justify-center p-2 rounded transition-transform transform rotate-90'
-                              : 'md:hidden inline-flex items-center justify-center p-2 rounded'
+                              ? 'inline-flex rotate-90 transform items-center justify-center rounded p-2 transition-transform md:hidden'
+                              : 'inline-flex items-center justify-center rounded p-2 md:hidden'
                         }
                         onClick={handleBurgerClick}
                         aria-label="Toggle menu"
                      >
-                        <span className="block w-5 h-0.5 bg-gray-700 mb-1"></span>
-                        <span className="block w-5 h-0.5 bg-gray-700 mb-1"></span>
-                        <span className="block w-5 h-0.5 bg-gray-700"></span>
+                        <span className="mb-1 block h-0.5 w-5 bg-gray-700"></span>
+                        <span className="mb-1 block h-0.5 w-5 bg-gray-700"></span>
+                        <span className="block h-0.5 w-5 bg-gray-700"></span>
                      </button>
                   </div>
 
-                  <div className="hidden md:flex items-center space-x-4">
+                  <div className="hidden items-center space-x-4 md:flex">
                      {user && (
                         <NavLink
                            to="/add"
                            className={({ isActive }) =>
-                              'px-3 py-1 rounded text-sm' +
+                              'rounded px-3 py-1 text-sm' +
                               (isActive
                                  ? ' bg-indigo-50 text-indigo-600'
                                  : ' text-gray-700 hover:bg-gray-100')
@@ -73,7 +73,7 @@ function App() {
                         <NavLink
                            to="/login"
                            className={({ isActive }) =>
-                              'px-3 py-1 rounded text-sm' +
+                              'rounded px-3 py-1 text-sm' +
                               (isActive
                                  ? ' bg-indigo-50 text-indigo-600'
                                  : ' text-gray-700 hover:bg-gray-100')
@@ -87,7 +87,7 @@ function App() {
                         <NavLink
                            to="/register"
                            className={({ isActive }) =>
-                              'px-3 py-1 rounded text-sm' +
+                              'rounded px-3 py-1 text-sm' +
                               (isActive
                                  ? ' bg-indigo-50 text-indigo-600'
                                  : ' text-gray-700 hover:bg-gray-100')
@@ -100,7 +100,7 @@ function App() {
                      {user && (
                         <NavLink
                            to="/logout"
-                           className="px-3 py-1 rounded text-sm text-gray-700 hover:bg-gray-100"
+                           className="rounded px-3 py-1 text-sm text-gray-700 hover:bg-gray-100"
                         >
                            Выйти
                         </NavLink>
@@ -110,7 +110,7 @@ function App() {
 
                {/* Mobile menu */}
                <div
-                  className={showMenu ? 'md:hidden block px-4 pb-4' : 'md:hidden hidden'}
+                  className={showMenu ? 'block px-4 pb-4 md:hidden' : 'hidden md:hidden'}
                   onClick={handleBurgerClick}
                >
                   <div className="flex flex-col space-y-2">
@@ -118,7 +118,7 @@ function App() {
                         <NavLink
                            to="/add"
                            className={({ isActive }) =>
-                              'block px-3 py-2 rounded text-sm' +
+                              'block rounded px-3 py-2 text-sm' +
                               (isActive
                                  ? ' bg-indigo-50 text-indigo-600'
                                  : ' text-gray-700 hover:bg-gray-100')
@@ -132,7 +132,7 @@ function App() {
                         <NavLink
                            to="/login"
                            className={({ isActive }) =>
-                              'block px-3 py-2 rounded text-sm' +
+                              'block rounded px-3 py-2 text-sm' +
                               (isActive
                                  ? ' bg-indigo-50 text-indigo-600'
                                  : ' text-gray-700 hover:bg-gray-100')
@@ -146,7 +146,7 @@ function App() {
                         <NavLink
                            to="/register"
                            className={({ isActive }) =>
-                              'block px-3 py-2 rounded text-sm' +
+                              'block rounded px-3 py-2 text-sm' +
                               (isActive
                                  ? ' bg-indigo-50 text-indigo-600'
                                  : ' text-gray-700 hover:bg-gray-100')
@@ -159,7 +159,7 @@ function App() {
                      {user && (
                         <NavLink
                            to="/logout"
-                           className="block px-3 py-2 rounded text-sm text-gray-700 hover:bg-gray-100"
+                           className="block rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                            Выйти
                         </NavLink>

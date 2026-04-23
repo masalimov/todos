@@ -16,11 +16,11 @@ export default function TodoList() {
 
    return (
       <section>
-         <h1 className="text-2xl font-semibold mb-4">Дела</h1>
+         <h1 className="mb-4 text-2xl font-semibold">Дела</h1>
 
          <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-               <tbody className="bg-white divide-y divide-gray-100">
+               <tbody className="divide-y divide-gray-100 bg-white">
                   {list.map((item: Todo) => (
                      <tr key={item.key} className="hover:bg-gray-50">
                         <td className="px-4 py-3">
@@ -33,13 +33,13 @@ export default function TodoList() {
                            </Link>
                         </td>
 
-                        <td className="px-4 py-3 w-24">
+                        <td className="w-24 px-4 py-3">
                            <button
                               className={
                                  (item.done
-                                    ? 'bg-green-200 text-green-700 cursor-not-allowed '
-                                    : 'bg-green-600 hover:bg-green-700 text-white ') +
-                                 'px-3 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300'
+                                    ? 'cursor-not-allowed bg-green-200 text-green-700 '
+                                    : 'bg-green-600 text-white hover:bg-green-700 ') +
+                                 'rounded-md px-3 py-1 focus:ring-2 focus:ring-green-300 focus:outline-none'
                               }
                               title="Выполнено"
                               disabled={item.done}
@@ -51,9 +51,9 @@ export default function TodoList() {
                            </button>
                         </td>
 
-                        <td className="px-4 py-3 w-24">
+                        <td className="w-24 px-4 py-3">
                            <button
-                              className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
+                              className="rounded-md bg-red-600 px-3 py-1 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-300 focus:outline-none"
                               title="Удалить"
                               onClick={() => {
                                  void handleDelClick(item.key);
@@ -68,45 +68,5 @@ export default function TodoList() {
             </table>
          </div>
       </section>
-      // <section>
-      //    <h1>Дела</h1>
-      //    <table className="table is-hoverable is-fullwidth">
-      //       <tbody>
-      //          {list.map((item: Todo) => (
-      //             <tr key={item.key}>
-      //                <td>
-      //                   <Link to={`/${item.key}`}>
-      //                      {item.done && <del>{item.title}</del>}
-      //                      {!item.done && item.title}
-      //                   </Link>
-      //                </td>
-      //                <td>
-      //                   <button
-      //                      className="button is-success"
-      //                      title="Выполнено"
-      //                      disabled={item.done}
-      //                      onClick={() => {
-      //                         void handleDoneClick(item.key);
-      //                      }}
-      //                   >
-      //                      &#9745;
-      //                   </button>
-      //                </td>
-      //                <td>
-      //                   <button
-      //                      className="button is-danger"
-      //                      title="Удалить"
-      //                      onClick={() => {
-      //                         void handleDelClick(item.key);
-      //                      }}
-      //                   >
-      //                      &#9746;
-      //                   </button>
-      //                </td>
-      //             </tr>
-      //          ))}
-      //       </tbody>
-      //    </table>
-      // </section>
    );
 }

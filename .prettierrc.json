@@ -4,5 +4,7 @@
    "semi": true,
    "tabWidth": 3,
    "trailingComma": "all",
-   "endOfLine": "auto"
- }
+   "endOfLine": "auto",
+   "plugins": ["prettier-plugin-tailwindcss"],
+   "tailwindStylesheet": "./src/main.css"
+}
