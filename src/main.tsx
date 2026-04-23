@@ -2,7 +2,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router';
 
-import 'bulma/css/bulma.css';
+// import 'bulma/css/bulma.css';
+import './main.css';
 import router from './routes.tsx';
 
 createRoot(document.getElementById('root')!).render(

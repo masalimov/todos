@@ -69,51 +69,63 @@ export default function Register() {
          <h1>Регистрация</h1>
          <form onSubmit={handleFormSubmit} onReset={handleFormReset}>
             {/* Поле email */}
-            <div className="field">
+            <div className="block text-sm font-medium mb-2">
                <label className="label">Адрес электронной почты</label>
                <div className="control">
                   <input
                      type="email"
                      value={email}
-                     className="input"
+                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                      onChange={(e) => setEmail(e.target.value)}
                   />
                </div>
-               {errorEmail && <p className="help is-danger">{errorEmail}</p>}
+               {errorEmail && <p className="mt-2 text-sm text-red-600">{errorEmail}</p>}
             </div>
             {/* Поле password */}
-            <div className="field">
-               <label className="label">Пароль</label>
-               <div className="control">
+            <div>
+               <label className="block text-sm font-medium mb-2">Пароль</label>
+               <div>
                   <input
                      type="password"
                      value={password}
-                     className="input"
+                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                      onChange={(e) => setPassword(e.target.value)}
                   />
                </div>
-               {errorPassword && <p className="help is-danger">{errorPassword}</p>}
+               {errorPassword && <p className="mt-2 text-sm text-red-600">{errorPassword}</p>}
             </div>
+
             {/* Поле password confirm */}
-            <div className="field">
-               <label className="label">Повторите пароль</label>
-               <div className="control">
+            <div>
+               <label className="block text-sm font-medium mb-2">Повторите пароль</label>
+               <div>
                   <input
                      type="password"
                      value={passwordConfirm}
-                     className="input"
+                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                      onChange={(e) => setPasswordConfirm(e.target.value)}
                   />
                </div>
-               {errorPasswordConfirm && <p className="help is-danger">{errorPasswordConfirm}</p>}
+               {errorPasswordConfirm && (
+                  <p className="mt-2 text-sm text-red-600">{errorPasswordConfirm}</p>
+               )}
             </div>
+
             {/* Кнопки */}
-            <div className="field is-grouped is-grouped-right">
-               <div className="control">
-                  <input type="reset" className="button is-varning is-light" value="Сброс" />
+            <div className="flex justify-end space-x-3">
+               <div>
+                  <input
+                     type="reset"
+                     className="px-4 py-2 rounded-md bg-yellow-200 hover:bg-yellow-300 text-yellow-900 focus:outline-none"
+                     value="Сброс"
+                  />
                </div>
-               <div className="control">
-                  <input type="submit" className="button is-primary" value="Зарегистрироваться" />
+               <div>
+                  <input
+                     type="submit"
+                     className="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white focus:outline-none"
+                     value="Зарегистрироваться"
+                  />
                </div>
             </div>
          </form>

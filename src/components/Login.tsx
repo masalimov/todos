@@ -18,39 +18,52 @@ export default function Login() {
 
    return (
       <section>
-         <h1>Вход</h1>
-         <form onSubmit={handleFormSubmit} onReset={handleFormReset}>
+         <h1 className="text-2xl font-semibold mb-6">Вход</h1>
+
+         <form onSubmit={handleFormSubmit} onReset={handleFormReset} className="max-w-md">
             {/* Поле email */}
-            <div className="field">
-               <label className="label">Адрес электронной почты</label>
-               <div className="control">
+            <div className="mb-4">
+               <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Адрес электронной почты
+               </label>
+               <div>
                   <input
                      type="email"
                      value={email}
-                     className="input"
+                     className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                      onChange={(e) => setEmail(e.target.value)}
                   />
                </div>
             </div>
+
             {/* Поле password */}
-            <div className="field">
-               <label className="label">Пароль</label>
-               <div className="control">
+            <div className="mb-6">
+               <label className="block text-sm font-medium text-gray-700 mb-1">Пароль</label>
+               <div>
                   <input
                      type="password"
                      value={password}
-                     className="input"
+                     className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                      onChange={(e) => setPassword(e.target.value)}
                   />
                </div>
             </div>
+
             {/* Кнопки */}
-            <div className="field is-grouped is-grouped-right">
-               <div className="control">
-                  <input type="reset" className="button is-varning is-light" value="Сброс" />
+            <div className="flex justify-end space-x-3">
+               <div>
+                  <input
+                     type="reset"
+                     className="px-4 py-2 rounded-md bg-yellow-100 text-yellow-800 hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                     value="Сброс"
+                  />
                </div>
-               <div className="control">
-                  <input type="submit" className="button is-primary" value="Войти" />
+               <div>
+                  <input
+                     type="submit"
+                     className="px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                     value="Войти"
+                  />
                </div>
             </div>
          </form>
